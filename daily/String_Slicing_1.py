@@ -1,0 +1,13 @@
+s=input("Enter String: ")
+
+print(s[3:10])
+print(s[:14])
+print(s[2:])
+print(s[3:15:3])
+print(s[::5])
+print()
+print(s[-16:-3])
+print(s[:-5])
+print(s[-15:])
+print(s[-15:-2:4])
+print(s[::-2])
