@@ -50,15 +50,18 @@ while True:
 
     if choice == 1:
         t1.admission("Java", 60000)
+        break
 
     elif choice == 2:
         t1.admission("Python", 65000)
-
+        break
     elif choice == 3:
         t1.admission("Web Designing", 95000)
+        break
 
     elif choice == 4:
         t1.admission("UI/UX", 60000)
+        break
 
     elif choice == 5:
         print("Thank you for choosing TOPS")

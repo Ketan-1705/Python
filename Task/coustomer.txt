@@ -1,3 +1,8 @@
-Table Number is: 1
-Coustomer Name is : ketan Goswami
-coustomer Mobile Number is : 9725666808
+--------Hotel----------
+Table Number is: 10
+Coustomer Name is : ketan
+coustomer Mobile Number is : 97256668708
+Shahi Paneer
+Kadhai Paneer
+Kadhai Paneer
+********************************************************************************
