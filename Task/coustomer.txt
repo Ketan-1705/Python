@@ -1,8 +1,17 @@
 --------Hotel----------
+Table Number is: 156151
+Coustomer Name is : jychjktyu
+coustomer Mobile Number is : 495651
+Shahi Paneer      --  RS. 250
+Paneer Butter Mas  --  RS. 250
+Paneer Handi       --  RS. 250
+Total Bill : 750
+****************************************
 Table Number is: 10
-Coustomer Name is : ketan
-coustomer Mobile Number is : 97256668708
-Shahi Paneer
-Kadhai Paneer
-Kadhai Paneer
-********************************************************************************
+Coustomer Name is : jay
+coustomer Mobile Number is : 14354
+Shahi Paneer      --  RS. 250
+Kadhai Paneer     --  RS. 250
+Paneer Butter Mas  --  RS. 250
+Total Bill : 750
+****************************************

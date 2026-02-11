@@ -23,64 +23,66 @@ while True:
 
     if choice==1:
         while True:
-            print("1. Shahi Paneer")
-            print("2. Mutter Paneer")
-            print("3. Palak Paneer")
-            print("4. Kadhai Paneer")
-            print("5. Paneer Butter Masala")
-            print("6. Paneer Handi")
+            print("1. Shahi Paneer    --  RS. 250")
+            print("2. Mutter Paneer   --  RS. 250")
+            print("3. Palak Paneer    --  RS. 250")
+            print("4. Kadhai Paneer   --  RS. 250")
+            print("5. Paneer Butter Masal --  RS. 250")
+            print("6. Paneer Handi    --  RS. 250")
             print("7. Exit")
             choicp=int(input("Enter Your Choice :"))
 
             if choicp==1:
                 bill.append(250,)
                 file=open("coustomer.txt","a")
-                file.write("Shahi Paneer" "\n")
+                file.write("Shahi Paneer      --  RS. 250" "\n")
                 file.close()
                 
             elif choicp==2:
                 bill.append(250,)
                 file=open("coustomer.txt","a")
-                file.write("Mutter Paneer" "\n")
+                file.write("Mutter Paneer      --  RS. 250" "\n")
                 file.close()
             elif choicp==3:
                 bill.append(250,)
                 file=open("coustomer.txt","a")
-                file.write("Kadhai Paneer" "\n")
+                file.write("Kadhai Paneer     --  RS. 250" "\n")
                 file.close()
             elif choicp==4:
                 bill.append(250,)
                 file=open("coustomer.txt","a")
-                file.write("Kadhai Paneer" "\n")
+                file.write("Kadhai Paneer      --  RS. 250" "\n")
                 file.close()
             elif choicp==5:
                 bill.append(250,)
                 file=open("coustomer.txt","a")
-                file.write("Paneer Butter Masala" "\n")
+                file.write("Paneer Butter Mas  --  RS. 250" "\n")
                 file.close()
             elif choicp==6:
                 bill.append(250,)
                 file=open("coustomer.txt","a")
-                file.write("Paneer Handi" "\n")
+                file.write("Paneer Handi       --  RS. 250" "\n")
                 file.close
             elif choicp==7:
-                file=open("coustomer.txt","a")
-                file.write("*"*40)
-                file.close()
+                
                 break
                
             else:
                 print("invallid")
     elif choice==4:
+        
+        for i in bill:
+            print(i)
+            total = sum(bill)
+        print("Total Bill =", total)
+        file=open("coustomer.txt","a")
+        file.write(f"Total Bill : {total}\n")
+        file.close()
         file=open("coustomer.txt","a")
         file.write("*"*40)
         file.close()
         break
-print(bill)
-for i in bill:
-    print(i)
-    total = sum(bill)
-print("Total Bill =", total)
+
 
 
 
