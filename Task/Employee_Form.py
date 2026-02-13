@@ -1,18 +1,44 @@
 from tkinter import *
-
-root=Tk()
-root.geometry("500x500")
-root.title("Employee Details")
-root.resizable(width=False,height=False)
+import mysql.connector
+import tkinter.messagebox as msg
+def creat_conn():
+    return mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="ketan"
+        )
 
 def insert_data():
-    print("Insert")
+    if e_name.get()=="" or e_number=="" or e_age=="" or e_department=="" or e_join=="" or e_salary=="":
+        msg.showinfo("Insert Status","All Fields Are Mandatory")
+    else:
+        conn=creat_conn()
+        cursor=conn.cursor()
+        query="Insert into employee(name,number,age,department,join_date,salary) values(%s,%s,%s,%s,%s,%s)"
+        args=(e_name.get(),e_number.get(),e_age.get(),e_department.get(),e_join.get(),e_salary.get())
+        cursor.execute(query,args)
+        conn.commit()
+        conn.close()
+        e_name.delete(0,'end')
+        e_number.delete(0,'end')
+        e_age.delete(0,'end')
+        e_department.delete(0,'end')
+        e_join.delete(0,'end')
+        e_salary.delete(0,'end')
+        msg.showinfo("Insert Status","Data Inserted Successfully")
 def search_data():
     print("Search")
 def update_data():
     print("Update")
 def delete_data():
     print("Delete")
+
+    
+root=Tk()
+root.geometry("500x500")
+root.title("Employee Details")
+root.resizable(width=False,height=False)
 
 l_id=Label(root,text="Id :", font=("Arial",10))
 l_id.place(x=50,y=50)
@@ -38,23 +64,23 @@ l_salary.place(x=50,y=350)
 e_id=Entry(root)
 e_id.place(x=170,y=50,width=250,height=25)
 
-e_id=Entry(root)
-e_id.place(x=170,y=100,width=250,height=25)
+e_name=Entry(root)
+e_name.place(x=170,y=100,width=250,height=25)
 
-e_id=Entry(root)
-e_id.place(x=170,y=150,width=250,height=25)
+e_number=Entry(root)
+e_number.place(x=170,y=150,width=250,height=25)
 
-e_id=Entry(root)
-e_id.place(x=170,y=200,width=250,height=25)
+e_age=Entry(root)
+e_age.place(x=170,y=200,width=250,height=25)
 
-e_id=Entry(root)
-e_id.place(x=170,y=250,width=250,height=25)
+e_department=Entry(root)
+e_department.place(x=170,y=250,width=250,height=25)
 
-e_id=Entry(root)
-e_id.place(x=170,y=300,width=250,height=25)
+e_join=Entry(root)
+e_join.place(x=170,y=300,width=250,height=25)
 
-e_id=Entry(root)
-e_id.place(x=170,y=350,width=250,height=25)
+e_salary=Entry(root)
+e_salary.place(x=170,y=350,width=250,height=25)
 
 insert=Button(root,text="INSERT",bg="#6699ff",fg="white",font=("Arial Rounded MT Bold",10),command=insert_data)
 insert.place(y=400,x=50)
