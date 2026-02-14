@@ -26,14 +26,73 @@ def insert_data():
         e_department.delete(0,'end')
         e_join.delete(0,'end')
         e_salary.delete(0,'end')
-        msg.showinfo("Insert Status","Data Inserted Successfully")
+        msg.showinfo("Insert Status","Data Successfully")
 def search_data():
-    print("Search")
+    e_name.delete(0,'end')
+    e_number.delete(0,'end')
+    e_age.delete(0,'end')
+    e_department.delete(0,'end')
+    e_join.delete(0,'end')
+    e_salary.delete(0,'end')
+    
+    if e_id.get()=="":
+        msg.showinfo("search Status","id is Mandatory")
+    else:
+        conn=creat_conn()
+        cursor=conn.cursor()
+        query="select * from employee where id=%s"
+        args=(e_id.get(),)
+        cursor.execute(query,args)
+        row=cursor.fetchall()
+        if row:
+            e_name.insert(0,row[0][1])
+            e_number.insert(0,row[0][2])
+            e_age.insert(0,row[0][3])
+            e_department.insert(0,row[0][4])
+            e_join.insert(0,row[0][5])
+            e_salary.insert(0,row[0][6])
+        else:
+            msg.showinfo("Search Status","Id not Found")
+            
+        conn.close()
+        
 def update_data():
-    print("Update")
+    if e_name.get()=="" or e_number=="" or e_age=="" or e_department=="" or e_join=="" or e_salary=="":
+        msg.showinfo("update Status","All Fields Are Mandatory")
+    else:
+        conn=creat_conn()
+        cursor=conn.cursor()
+        query="update employee set name=%s,number=%s,age=%s,department=%s,join_date=%s,salary=%s"
+        args=(e_name.get(),e_number.get(),e_age.get(),e_department.get(),e_join.get(),e_salary.get())
+        cursor.execute(query,args)
+        conn.commit()
+        conn.close()
+        e_name.delete(0,'end')  
+        e_number.delete(0,'end')
+        e_age.delete(0,'end')
+        e_department.delete(0,'end')
+        e_join.delete(0,'end')
+        e_salary.delete(0,'end')
+        msg.showinfo("Update Status","Data Updated Successfully")
 def delete_data():
-    print("Delete")
-
+     if e_id.get()=="":
+        msg.showinfo("Delete Status","Id is Mandatory")
+     else:
+        conn=creat_conn()
+        cursor=conn.cursor()
+        query="delete from employee where id=%s"
+        args=(e_id.get(),)
+        cursor.execute(query,args)
+        conn.commit()
+        conn.close()
+        e_name.delete(0,'end')
+        e_number.delete(0,'end')
+        e_age.delete(0,'end')
+        e_department.delete(0,'end')
+        e_join.delete(0,'end')
+        e_salary.delete(0,'end')
+        msg.showinfo("Delete Status","Data Deleted Successfully")
+    
     
 root=Tk()
 root.geometry("500x500")
