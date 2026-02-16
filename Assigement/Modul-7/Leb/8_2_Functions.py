@@ -8,4 +8,8 @@ def getdata():
         print("Sum is :",a+b)
     elif c== "-":
         print("Sub is :",a-b)
+    elif c== "*":
+        print("Mul is :",a*b)
+    elif c== "/":
+        print("Div is :",a/b)
 getdata()
