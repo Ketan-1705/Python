@@ -1,0 +1,51 @@
+{% extends 'header.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Site</title>
+</head>
+<body>
+    <h1>This is Contact page</h1>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-md-6 col-lg-5">
+
+        <form class="p-4 border rounded bg-white shadow" action="">
+
+            <div class="mb-4">
+                <label class="form-label">Name :</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Email :</label>
+                <input type="email" class="form-control">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Mobile Number :</label>
+                <input type="text" class="form-control">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Remarks :</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary px-4">
+                    SUBMIT
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}
