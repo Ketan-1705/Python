@@ -13,17 +13,13 @@
     </style>
 </head>
 <body>
-    <h1>This is Contact.html</h1>
+    <h1>This is login.html</h1>
     <center>
-        <form action="{% url 'contact' %}" name="contact" method="post">
-            {% csrf_token %}
-            {% if msg %}
-                <h3 style="color: green;">{{msg}}</h3>
-            {% endif %}
+        <form action="" name="contact" mathod="post">
         <table>
             <tr>
                 <td>Nmae :</td>
-                <td><input type="text" name="name" id=""></td>
+                <td><input type="text" name="fname" id=""></td>
             </tr>
             <tr>
                 <td>Email :</td>
@@ -35,20 +31,14 @@
             </tr>
             <tr>
                 <td>Remarks :</td>
-                <td><textarea name="remark" id="" rows="2" cols="22"></textarea></td>
+                <td><textarea name="remarks" id="" rows="2" cols="22"></textarea></td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><input type="submit"  value="SUBMIT" class="btn btn-primary"></td>
+                <td colspan="2" align="center"><input type="submit" value="SUBMIT" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>
     </center>
-    <h1>Eecent Contect</h1>
-    <hr>
-    {% for i in contact %} 
-        Name : {{i.name}} <br>
-        Remarks : {{i.remark}} <br><hr>
-    {% endfor %}
 </body>
 </html>
 {% endblock %}

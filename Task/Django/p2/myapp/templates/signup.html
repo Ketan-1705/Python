@@ -13,13 +13,13 @@
     </style>
 </head>
 <body>
-    <h1>This is Contact.html</h1>
+    <h1>This is Signup.html</h1>
     <center>
-        <form action="{% url 'contact' %}" name="contact" method="post">
+        <form action="{% url 'signup' %}" name="signup" method="post">
             {% csrf_token %}
-            {% if msg %}
+           {% if msg %}
                 <h3 style="color: green;">{{msg}}</h3>
-            {% endif %}
+            {% endif %} 
         <table>
             <tr>
                 <td>Nmae :</td>
@@ -34,21 +34,23 @@
                 <td><input type="text" name="mobile" id=""></td>
             </tr>
             <tr>
-                <td>Remarks :</td>
-                <td><textarea name="remark" id="" rows="2" cols="22"></textarea></td>
+                <td>Address :</td>
+                <td><textarea name="address" id="" rows="2" cols="22"></textarea></td>
             </tr>
             <tr>
-                <td colspan="2" align="center"><input type="submit"  value="SUBMIT" class="btn btn-primary"></td>
+                <td>Password :</td>
+                <td><input type="password" name="password" id=""></td>
+            </tr>
+            <tr>
+                <td>Conform -Password :</td>
+                <td><input type="password" name="c_password" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="SUBMIT" class="btn btn-primary"></td>
             </tr>
         </table>
     </form>
     </center>
-    <h1>Eecent Contect</h1>
-    <hr>
-    {% for i in contact %} 
-        Name : {{i.name}} <br>
-        Remarks : {{i.remark}} <br><hr>
-    {% endfor %}
 </body>
 </html>
 {% endblock %}
