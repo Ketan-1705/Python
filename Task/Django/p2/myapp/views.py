@@ -27,7 +27,7 @@ def signup(request):
             User.objects.create(
             name=request.POST['name'],
             email=request.POST['email'],
-            mobile=request.POST['mobile'],
+            mobile=request.POST['mo xbile'],
             address=request.POST['address'],
             password=request.POST['password']
             )
