@@ -1,1 +1,0 @@
-This is Python program to open a file in write mode 
