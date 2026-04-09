@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Login - WriteSphere{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="glass-container">
+            <h2 class="text-center mb-4">Welcome Back</h2>
+            <p class="text-center text-white-50 mb-4">Log in to your account and continue writing.</p>
+            
+            {% if form.errors %}
+                <div class="alert alert-danger py-2 small border-0">
+                    Invalid username or password.
+                </div>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label small text-white-50">Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label small text-white-50">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2">Login</button>
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+            
+            <div class="text-center mt-4">
+                <p class="small text-white-50 mb-0">Don't have an account? <a href="{% url 'blog:register' %}" class="fw-bold">Sign Up</a></p>
+                <p class="mt-2"><a href="{% url 'password_reset' %}" class="small text-muted text-decoration-none">Forgot Password?</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Explore Posts - WriteSphere{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Sidebar Filters -->
+    <div class="col-lg-3 mb-4">
+        <div class="card p-3 sticky-top" style="top: 80px;">
+            <h5 class="mb-3">Filters</h5>
+            <form method="get">
+                <div class="mb-3">
+                    <label class="form-label small">Author</label>
+                    <input type="text" name="author" class="form-control form-control-sm" value="{{ request.GET.author }}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small">Category</label>
+                    <input type="text" name="category" class="form-control form-control-sm" value="{{ request.GET.category }}">
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <label class="form-label small">From</label>
+                        <input type="date" name="start" class="form-control form-control-sm" value="{{ request.GET.start }}">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label small">To</label>
+                        <input type="date" name="end" class="form-control form-control-sm" value="{{ request.GET.end }}">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 btn-sm">Apply Filters</button>
+                <a href="{% url 'blog:home' %}" class="btn btn-outline-secondary w-100 btn-sm mt-2">Clear</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Post Grid -->
+    <div class="col-lg-9">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Latest Stories</h2>
+            {% if user.is_authenticated and user.profile.role == 'author' or user.is_superuser %}
+            <a href="{% url 'blog:create_post' %}" class="btn btn-primary">Create New Post</a>
+            {% endif %}
+        </div>
+        
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for post in posts %}
+            <div class="col">
+                <div class="card h-100">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary">{{ post.category.name }}</span>
+                            <small class="text-muted">{{ post.created_at|date:"M d, Y" }}</small>
+                        </div>
+                        <h4 class="card-title">
+                            <span class="text-white">{{ post.title }}</span>
+                        </h4>
+                        <p class="card-text text-muted small">
+                            {{ post.content|truncatewords:20 }}
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between align-items-center">
+                        <small class="text-white-50">By <b>{{ post.author.username }}</b></small>
+                        {% if user.is_authenticated and post.author == user %}
+                        <div>
+                            <a href="{% url 'blog:edit_post' post.pk %}" class="btn btn-sm btn-outline-info p-1"><small>Edit</small></a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="glass-container text-center py-5">
+                    <h3>No posts found.</h3>
+                    <p class="text-muted">Try adjusting your filters or check back later.</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

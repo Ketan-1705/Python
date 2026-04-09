@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Sign Up - WriteSphere{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="glass-container">
+            <h2 class="text-center mb-4">Create Your Account</h2>
+            <p class="text-center text-white-50 mb-4">Join the community of writers and readers.</p>
+            
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label small text-white-50">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ field.errors|first }}
+                        </div>
+                    {% endif %}
+                    {% if field.help_text %}
+                        <div class="text-muted extra-small mt-1">
+                            {{ field.help_text|safe }}
+                        </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-3">Register</button>
+            </form>
+            
+            <div class="text-center mt-4">
+                <p class="small text-white-50 mb-0">Already have an account? <a href="{% url 'login' %}" class="fw-bold">Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .extra-small {
+        font-size: 0.75rem;
+    }
+</style>
+{% endblock %}
